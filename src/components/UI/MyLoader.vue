@@ -22,7 +22,7 @@ export default {
   position: absolute;
   left: 8px;
   width: 16px;
-  background: white ;
+  background: teal;
   animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
 }
 .lds-facebook div:nth-child(1) {
@@ -52,7 +52,7 @@ export default {
   bottom: 0;
   right: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(221, 225, 231, 0.7);
   position: fixed;
   display: flex;
   justify-content: center;
