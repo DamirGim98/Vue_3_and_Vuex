@@ -32,19 +32,11 @@
     <my-loader
         v-else
     />
-    <div class="page_wrapper">
-      <div
-          class="page"
-          v-for="pageNumber in totalPages"
-          :key="pageNumber"
-          :class="{
-            'page_active': page === pageNumber
-          }"
-          @click="changePage(pageNumber)"
-      >
-        {{pageNumber}}
-      </div>
-    </div>
+    <my-pagination
+        v-model:page="page"
+        :totalPages="totalPages"
+    >
+    </my-pagination>
   </div>
 </template>
 
@@ -103,9 +95,6 @@ export default {
 
       }
     },
-    changePage (pageNumber) {
-      this.page = pageNumber
-    }
   },
   mounted() {
     this.fetchPosts();
@@ -128,6 +117,7 @@ export default {
 
 <style>
   * {
+    font-family: 'Roboto', sans-serif;
     background-color: #dde1e7;;
     margin: 0;
     padding: 0;
@@ -143,47 +133,4 @@ export default {
     justify-content: space-between;
     align-items: center;
   }
-
-  .page_wrapper {
-    display: flex;
-    margin-top: 15px;
-
-    background: #dde1e7;
-    padding: 10px;
-    border-radius: 3px;
-    box-shadow: -3px -3px 7px #ffffff73, 3px 3px 5px rgba(94, 104, 121, 0.288);
-
-  }
-
-  .page {
-    flex: 1;
-    margin: 0 5px;
-    background: #dde1e7;
-    border-radius: 3px;
-    box-shadow: -3px -3px 7px #ffffff73, 3px 3px 5px rgba(94, 104, 121, 0.288);
-
-
-    font-family: Arial, sans-serif;
-    text-align: center;
-    font-size: 14px;
-    text-decoration: none;
-    color: #4d3252;
-    height: 20px;
-    line-height: 20px;
-    width: 55px;
-    display: block;
-  }
-
-  .page_active {
-    box-shadow: inset -3px -3px 7px #ffffff73,
-    inset 3px 3px 5px rgba(94, 104, 121, 0.288);
-  }
-  /*@media screen and (max-width: 1200px) {*/
-  /*  .wrapper {*/
-  /*    height: 150px;*/
-  /*    align-items: flex-start;*/
-  /*    justify-content: space-between;*/
-  /*    flex-direction: column;*/
-  /*  }*/
-  /*}*/
 </style>
