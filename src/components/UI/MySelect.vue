@@ -1,7 +1,8 @@
 <template>
-  <select v-model="modelValue" @change="changeOptions">
-    <option disabled value="">Выберете метод сортировки</option>
+  <select class="sort-method" v-model="modelValue" @change="changeOptions">
+    <option  disabled value="">Выберете метод сортировки</option>
     <option
+        style="background-color: aliceblue"
         v-for="option in options"
         :key="option.value"
         :value="option.value"
@@ -32,5 +33,10 @@ export default {
 </script>
 
 <style scoped>
-
+  .sort-method {
+    max-width: 200px;
+    height: 30px;
+    background-color: aliceblue;
+    border-radius: 10px;
+  }
 </style>

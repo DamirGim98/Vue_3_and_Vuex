@@ -37,7 +37,7 @@ export default {
 }
 .post-list-enter-active,
 .post-list-leave-active {
-  transition: all 0.5s ease;
+  transition: 0.2s ease;
 }
 .post-list-enter-from,
 .post-list-leave-to {
