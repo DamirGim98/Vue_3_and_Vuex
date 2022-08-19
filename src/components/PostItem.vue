@@ -1,8 +1,8 @@
 <template>
   <div class="post">
     <div>
-      <div><strong>Название: </strong>{{ post.title}}</div>
-      <div><strong>Описание: </strong>{{post.body}}</div>
+      <div class="text-container" ><strong>Название: </strong>{{ post.title}}</div>
+      <div class="text-container"  ><strong>Описание: </strong>{{post.body}}</div>
     </div>
     <div>
       <my-button
@@ -38,5 +38,8 @@ export default {
   border: 2px solid teal;
   border-radius: 5px;
   margin-top: 15px;
+}
+.text-container {
+  padding-right: 20px;
 }
 </style>

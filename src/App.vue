@@ -2,20 +2,27 @@
   <div class="App">
     <div class="wrapper">
       <h1>Страница с постами</h1>
-<!--      <my-button @click="fetchPosts">Получить посты</my-button>-->
-
+      <my-input
+          style="width: 300px; height: 30px; background-color: aliceblue; border-radius: 10px"
+          v-model="searchQuery"
+          placeholder="поиск..."
+      />
+      <my-select
+        v-model="selectedSort"
+        :options="sortOptions"
+      />
       <my-button @click="showDialog">
         Создать пост
       </my-button>
     </div>
-    <my-dialog :show="dialogVisible">
+    <my-dialog v-model:show="dialogVisible">
       <post-forms
           @create="createPost"
       />
     </my-dialog>
 
     <post-list
-        :posts="posts"
+        :posts="sortedAndSearchedPosts"
         @remove="removePost"
         v-if="!isPostLoading"
     />
@@ -38,6 +45,12 @@ export default {
       posts: [],
       dialogVisible: false,
       isPostLoading: false,
+      selectedSort: '',
+      searchQuery: '',
+      sortOptions: [
+        {value: 'title', name: 'По названию'},
+        {value: 'body', name: 'По описанию'},
+      ],
     }
   },
   methods: {
@@ -68,7 +81,18 @@ export default {
   },
   mounted() {
     this.fetchPosts();
-  }
+  },
+  computed: {
+    sortedPosts() {
+      return [...this.posts].sort((post1,post2) =>  post1[this.selectedSort]?.localeCompare(post2[this.selectedSort]))
+    },
+    sortedAndSearchedPosts() {
+      return this.sortedPosts.filter(post => post.title.toLowerCase().includes(this.searchQuery.toLowerCase()))
+    },
+  },
+  watch: {
+
+  },
 }
 </script>
 
@@ -82,9 +106,10 @@ export default {
     padding: 20px 80px;
   }
   .wrapper {
-    font-family: Arial;
+    font-family: Arial, sans-serif;
     font-size: 14px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
 </style>
