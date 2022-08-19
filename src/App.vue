@@ -2,12 +2,12 @@
   <div class="App">
     <div class="wrapper">
       <h1>Страница с постами</h1>
-      <my-button @click="fetchPosts">Получить посты</my-button>
+<!--      <my-button @click="fetchPosts">Получить посты</my-button>-->
       <my-button @click="showDialog">
         Создать пост
       </my-button>
     </div>
-    <my-dialog v-model:show="dialogVisible">
+    <my-dialog :show="dialogVisible">
       <post-forms
           @create="createPost"
       />
@@ -51,10 +51,12 @@ export default {
         this.posts = response.data
         console.log(response)
       } catch (e) {
-
+        alert('Что-то пошло не так...')
       }
     }
-
+  },
+  mounted() {
+    this.fetchPosts()
   }
 }
 </script>
