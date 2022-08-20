@@ -15,6 +15,12 @@
       >
         About App
       </my-button>
+      <my-button
+          @click="$router.push('/store')"
+          class="navbar_btn navbar_btn_active"
+      >
+        VueX App
+      </my-button>
     </div>
   </div>
 </template>
@@ -31,7 +37,7 @@ export default {
   width: 100vw;
   height: 70px;
   display: grid;
-  grid-template-columns: 2fr 2fr 2fr;
+  grid-template-columns: 2fr 1fr 4fr;
   justify-items: center;
   align-items: center;
   gap: 20px;

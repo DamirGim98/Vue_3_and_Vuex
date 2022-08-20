@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Страница с постами</h1>
+    <h1>Страница с постами {{$store.state.likes}}</h1>
     <div class="wrapper">
       <my-input
           style="max-width: 200px; height: 30px; background-color: aliceblue; border-radius: 10px"
