@@ -1,5 +1,5 @@
 <template>
-  <div class="navbar">
+  <div  class="navbar">
     <div class="navbar_title" @click="$router.push('/')" >Vue app</div>
     <div class="navbar_btns">
       <my-button
@@ -27,7 +27,7 @@
 
 <script>
 export default {
-
+  
 }
 </script>
 
