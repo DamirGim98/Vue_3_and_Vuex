@@ -1,10 +1,6 @@
 <template>
   <div>
-    <h1>Страница с постами</h1>
-    <div>
-      <my-button @click="$store.commit('incrementLikes')">Like</my-button>
-      <my-button @click="$store.commit('decrementLikes')" >DisLike</my-button>
-    </div>
+    <h1>Страница с постами и global store</h1>
     <div class="wrapper">
       <my-input
           style="max-width: 200px; height: 30px; background-color: aliceblue; border-radius: 10px"
@@ -65,7 +61,8 @@ export default {
     }),
     ...mapActions({
       loadMorePosts: 'post/loadMorePosts',
-      fetchPosts: 'post/fetchPosts'
+      fetchPosts: 'post/fetchPosts',
+      removePostFromStore: 'post/removePostFromStore'
     }),
     ...mapGetters({
 
@@ -75,7 +72,7 @@ export default {
       this.dialogVisible = !this.dialogVisible
     },
     removePost (post) {
-      this.posts = this.posts.filter(post_item => post_item.id !== post.id)
+      this.$store.dispatch('post/removePostFromStore', post)
     },
     showDialog() {
       this.dialogVisible = !this.dialogVisible

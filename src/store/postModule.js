@@ -41,6 +41,9 @@ export const postModule = {
         setSearchQuery(state, searchQuery) {
             state.searchQuery = searchQuery
         },
+        deletePost(state, post) {
+            state.posts = state.posts.filter(p => p.id !== post.id)
+        }
     },
     actions: {
         async fetchPosts ({state, commit}) {
@@ -79,6 +82,9 @@ export const postModule = {
                 console.log(e)
             }
         },
+        removePostFromStore({commit}, post) {
+            commit('deletePost', post)
+        }
     },
     namespaced: true
 }
